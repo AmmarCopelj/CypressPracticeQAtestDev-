@@ -1,0 +1,10 @@
+{
+  "email": "fakeemail@gmail.com",
+  "password": "fakepassword1234#",
+  "wrongEmail": "abc@gmail.com",
+  "wrongPassword":"2345",
+  "username": "fakeusername",
+  "firstName": "Ibrahim",
+  "lastName": "Ibrahimovic",
+  "city": "Mostar"
+}
