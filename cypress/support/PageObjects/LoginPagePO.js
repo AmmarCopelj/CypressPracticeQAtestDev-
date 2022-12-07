@@ -1,5 +1,5 @@
 class LoginPage {
-  navigate() {
+  homepage() {
     cy.visit("/");
     cy.get('div[aria-label="My account"]').contains("Sign in").click();
   }

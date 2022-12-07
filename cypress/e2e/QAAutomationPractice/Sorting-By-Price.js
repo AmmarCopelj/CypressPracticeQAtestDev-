@@ -3,6 +3,11 @@ import Billing from "../../support/PageObjects/Billing.js";
 import CheckoutForm from "../../support/PageObjects/CheckoutForm.js";
 
 describe("Adding products to basket", function () {
+  const addProducts = new AddingProducts();
+
+  beforeEach(function () {
+    addProducts.homepage();
+  });
   let data;
   before(() => {
     cy.fixture("example").then((fData) => {
@@ -13,7 +18,6 @@ describe("Adding products to basket", function () {
   it("Sort products by price from low to high", function () {
     const addProducts = new AddingProducts();
 
-    addProducts.navigate();
     cy.selectMenuItem("Home Décor");
     cy.get("ul li .MenuOverlay-ItemList>*")
       .contains("All Home Décor")
@@ -39,7 +43,6 @@ describe("Adding products to basket", function () {
   });
   it("Sort products by price from high to low", function () {
     const addProducts = new AddingProducts();
-    addProducts.navigate();
     cy.selectMenuItem("Home Décor");
     cy.get("ul li .MenuOverlay-ItemList>*")
       .contains("All Kitchen & Dining")

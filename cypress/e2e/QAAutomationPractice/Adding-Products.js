@@ -3,6 +3,11 @@ import Billing from "../../support/PageObjects/Billing.js";
 import CheckoutForm from "../../support/PageObjects/CheckoutForm.js";
 
 describe("Adding products to basket", function () {
+  const addProducts = new AddingProducts();
+
+  beforeEach(function () {
+    addProducts.homepage();
+  });
   let data;
   before(() => {
     cy.fixture("example").then((fData) => {
@@ -15,7 +20,6 @@ describe("Adding products to basket", function () {
     const billing = new Billing();
     const checkoutFill = new CheckoutForm();
 
-    addProducts.navigate();
     cy.selectMenuItem("Portmeirion");
     cy.get("ul li .MenuOverlay-ItemList>*")
       .contains("Cooking")
@@ -40,7 +44,6 @@ describe("Adding products to basket", function () {
     const billing = new Billing();
     const checkoutFill = new CheckoutForm();
 
-    addProducts.navigate();
     cy.selectMenuItem("Portmeirion");
     cy.get("ul li .MenuOverlay-ItemList>*")
       .contains("Amor")

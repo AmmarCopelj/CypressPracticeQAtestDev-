@@ -1,6 +1,11 @@
-import LoginPage from "../../support/PageObjects/LoginsInfoPO.js";
+import LoginPage from "../../support/PageObjects/LoginPagePO.js";
 
 describe("Validation of User info from Dashboard", function () {
+  const loginPage = new LoginPage();
+
+  beforeEach(function () {
+    loginPage.homepage();
+  });
   let data;
   before(() => {
     cy.fixture("example").then((fData) => {
@@ -11,7 +16,6 @@ describe("Validation of User info from Dashboard", function () {
   it("Sign in with valid credentials and check user info", function () {
     const loginPage = new LoginPage();
     ///
-    loginPage.navigate();
     loginPage.enterEmail().type(data.email);
     loginPage.enterPassword().type(data.password);
     loginPage.submit().wait(2000);

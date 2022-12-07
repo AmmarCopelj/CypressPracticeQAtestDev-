@@ -1,8 +1,13 @@
 /// <reference types="Cypress"/>
 
-import LoginPage from "../../support/PageObjects/LoginsInfoPO.js";
+import LoginPage from "../../support/PageObjects/LoginPagePO.js";
 
-describe("Visit page & login", function() {
+describe("Visit homepage & login", function () {
+  const loginPage = new LoginPage();
+
+  beforeEach(function () {
+    loginPage.homepage();
+  });
   let data;
   before(() => {
     cy.fixture("example").then((fData) => {
@@ -13,7 +18,6 @@ describe("Visit page & login", function() {
   it("Sign in with valid credentials", function () {
     const loginPage = new LoginPage();
     ///
-    loginPage.navigate();
     loginPage.enterEmail().type(data.email);
     loginPage.enterPassword().type(data.password);
     loginPage.submit();
@@ -24,7 +28,6 @@ describe("Visit page & login", function() {
 
   it("User cannot sign without valid email", () => {
     const unsuccessfullogin = new LoginPage();
-    unsuccessfullogin.navigate();
     unsuccessfullogin.enterEmail().type(data.wrongEmail);
     unsuccessfullogin.enterPassword().type(data.password);
     unsuccessfullogin.submit();
@@ -37,7 +40,6 @@ describe("Visit page & login", function() {
   });
   it("User cannot sign without valid password", () => {
     const unsuccessfullogin1 = new LoginPage();
-    unsuccessfullogin1.navigate();
     unsuccessfullogin1.enterEmail().type(data.email);
     unsuccessfullogin1.enterPassword().type(data.wrongPassword);
     unsuccessfullogin1.submit();
